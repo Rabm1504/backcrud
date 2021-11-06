@@ -1,4 +1,5 @@
-.App {
+/* 
+ .App {
   text-align: center;
 }
 
@@ -35,4 +36,42 @@
   to {
     transform: rotate(360deg);
   }
+} */
+
+.movie-container {
+  width: 300px;
+}
+
+.movie-poster{
+  height: 300px;
+  width: 300px;
+  object-fit: cover;
+}
+
+.movie-specs{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.movie-name {
+  font-size: 24px;
+  margin: 8px 0px;
+}
+
+body {
+  margin: 24px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.movie-list {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.counter-container {
+  display: flex;
+  gap: 20px;
 }
