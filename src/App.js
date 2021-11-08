@@ -1,5 +1,6 @@
-import "./App.css";
 import { useState } from "react";
+import "./App.css";
+import { MovieList } from "./MovieList";
 
 export default function App() {
   const users = [
@@ -59,47 +60,30 @@ export default function App() {
       {/* {users.map(({ pic, name }) => (
         <Msg name={name} pic={pic} />
       ))} */}
-      <div className='movie-list'>
-      { movies.map(({image, name, rating, discription}) => (
-      <Movie image= {image} name= {name} rating= {rating} discription= {discription} />
-    ))}
-      </div>
+
+    {/* <MovieList movies={movies} /> */}
+    <AddColor />
   </div>
   );
 }
 
-function Msg({ pic, name }) {
-  return (
-    <div>
-      <img height="200" src={pic} alt={name} />
-      <h1> Hi {name}, how are you </h1>
-    </div>
-  );
-}
+function AddColor() {
+  const [color, setColor] = useState('');
+  const [colors, setColors] = useState(['red', 'blue', 'cyan'])
+  const styles = {backgroundColor: color }
 
-function Movie({image, name, rating, discription}) {
-  return (
-    <div className="movie-container">
-      <img className="movie-poster" src={image} alt="" />
-
-      <div className="movie-specs">
-      <h3 className="movie-name">{name}</h3>
-      <p className="movie-rating">{rating}</p>
-      </div>
-
-      <p>{discription}</p>
-      <Counter />
-    </div>
-  )
-}
-
-function Counter() {
-  const [like, setLike] = useState(0)
-  const [disLike, setDisLike] = useState(0)
   return(
-    <div className="counter-container">
-    <button onClick={() => setLike(like + 1)}>👍 {like}</button>
-    <button onClick={() => setDisLike(disLike + 1)}>👎 {disLike}</button>
-  </div>
+    <div>
+          <input style={styles} onChange={(event) => setColor(event.target.value) } placeholder="Enter Input" />
+          <button onClick={() => setColors([...colors, color])}>Add Color</button>
+          {colors.map((clr, index) => (
+            <ColorBox key={index} clr= {clr} />
+          ))} 
+    </div>
   )
+}
+
+function ColorBox({clr}) {
+  const styles = {backgroundColor: clr, height: '100px', width: '180px', margin: '20px'}
+    return <div style={styles}></div>
 }
