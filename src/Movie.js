@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Counter } from "./Counter";
+import Button from '@mui/material/Button';
 
-export function Movie({ image, name, rating, discription }) {
+export function Movie({ image, name, rating, description }) {
   const [show, setShow] = useState(true);
   const styles = {display: show ? 'block' : 'none'}
   return (
@@ -13,12 +14,12 @@ export function Movie({ image, name, rating, discription }) {
         <p className="movie-rating">{rating}</p>
       </div>
 
-      <button onClick={() => setShow(!show)} style={{marginBottom: '20px'}}>{show ? 'Hide' : 'Show'} Discription</button>
+      <Button onClick={() => setShow(!show)} style={{marginBottom: '20px'}} variant="contained">{show ? 'Hide' : 'Show'} Description</Button>
       {/* Conditional styling */}
-      {/* <p style={styles}>{discription}</p> */}
+      <p style={styles}>{description}</p>
 
       {/* Conditional Rendering */}
-      {show ? <p>{discription}</p> : ""}
+      {/* {show ? <p>{description}</p> : ""} */}
       <Counter />
     </div>
   );
