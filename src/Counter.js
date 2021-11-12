@@ -1,7 +1,6 @@
 import { useState } from "react";
 import IconButton from '@mui/material/IconButton';
 import Badge from '@mui/material/Badge';
-import MailIcon from '@mui/icons-material/Mail';
 
 function Counter() {
     const [like, setLike] = useState(0)
