@@ -4,7 +4,7 @@ import { MovieList } from "./MovieList";
 import { INITIAL_MOVIES } from "./INITIAL_MOVIES";
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import { Switch, Route, Link, Redirect } from "react-router-dom";
+import { Switch, Route, Link, Redirect, useParams } from "react-router-dom";
 import { AddColor } from "./AddColor";
 
 export default function App() {
@@ -58,7 +58,7 @@ const addMovie = () => {
         <li>
           <Link to="/color-game">Color Game</Link>
         </li>
-      </ul>
+</ul>
 
       {/* {users.map(({ pic, name }) => (
         <Msg name={name} pic={pic} />
@@ -73,6 +73,10 @@ const addMovie = () => {
 
 <Route path="/films">
   <Redirect to='/movies' />
+</Route>
+
+<Route path="/movies/:id">
+  <MovieDetails movies={movies} />
 </Route>
 
 <Route path="/movies">
@@ -103,5 +107,30 @@ function NotFound() {
   const styles = {width: '100%', objectFit: 'cover'}
   return (
     <img style={styles} src='https://www.figmints.com/wp-content/uploads/2019/09/image16.gif' alt="" />
+  ) 
+}
+
+function MovieDetails({movies}) {
+  const {id} = useParams();
+  const movie = movies[id];
+  return (
+  <div>
+<iframe
+  width="100%"
+  height="570"
+  src={movie.trailer}
+  title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+
+<div className="movie-detail-container">
+<div className="movie-specs">
+  <h3 className="movie-name">{movie.name}</h3>
+  <p className="movie-rating">{movie.rating}</p>
+</div>
+
+{/* Conditional styling */}
+<p>{movie.description}</p>
+</div>
+  </div>
   ) 
 }
