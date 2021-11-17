@@ -12,7 +12,7 @@ import InfoIcon from '@mui/icons-material/Info';
 import { useHistory } from "react-router-dom";
 
 
-export function Movie({ image, name, rating, description, index }) {
+export function Movie({ image, name, rating, description, index, deleteButton, updateButton }) {
   const [show, setShow] = useState(true);
   const styles = {display: show ? 'block' : 'none'}
   const history = useHistory();
@@ -42,6 +42,8 @@ export function Movie({ image, name, rating, description, index }) {
       {/* {show ? <p>{description}</p> : ""} */}
       <CardActions>
       <Counter />
+      {deleteButton}
+      {updateButton}
       </ CardActions>
     </Card>
   );

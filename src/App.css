@@ -83,3 +83,7 @@ body {
   padding: 20px;
   gap: 12px;
 }
+
+.movie-detail-containe {
+  padding: 1rem;
+}
