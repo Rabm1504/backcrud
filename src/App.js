@@ -3,11 +3,14 @@ import "./App.css";
 import { MovieList } from "./MovieList";
 import { INITIAL_MOVIES } from "./INITIAL_MOVIES";
 import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
 import { Switch, Route, Link, Redirect, useParams } from "react-router-dom";
 import { AddColor } from "./AddColor";
+import { useHistory } from "react-router-dom";
+import { AddMovie } from "./AddMovie";
+import { EditMovie } from "./EditMovie";
 
 export default function App() {
+  const [movies, setMovies] = useState(INITIAL_MOVIES)
   const users = [
     {
       name: "Jayesh",
@@ -21,31 +24,6 @@ export default function App() {
     }
   ];
 
-  const [movies, setMovies] = useState(INITIAL_MOVIES)
-
-  const [image, setImage] = useState('');
-  const [name, setName] = useState('');
-  const [rating, setRating] = useState('');
-  const [description, setDescription] = useState('');
-
-  const resetForm = () => {
-    setImage("");
-    setName("");
-    setRating("");
-    setDescription("");
-  }
-
-const addMovie = () => {
-  const newMovie = {
-    image,
-    name,
-    rating,
-    description,
-  }
-    setMovies([...movies, newMovie]);
-    resetForm();
-}
-
   return (
     <div className="App">
 <ul>
@@ -54,6 +32,9 @@ const addMovie = () => {
         </li>
         <li>
           <Link to="/movies">Movies</Link>
+        </li>
+        <li>
+          <Link to="/movies/add-movie">Add Movies</Link>
         </li>
         <li>
           <Link to="/color-game">Color Game</Link>
@@ -75,19 +56,20 @@ const addMovie = () => {
   <Redirect to='/movies' />
 </Route>
 
+<Route path="/movies/add-movie">
+  <AddMovie movies={movies} setMovies={setMovies} />
+</Route>
+
+<Route path="/movies/edit/:id">
+  <EditMovie movies={movies} setMovies={setMovies} />
+</Route>
+
 <Route path="/movies/:id">
-  <MovieDetails movies={movies} />
+  <MovieDetails movies={movies} setMovies={setMovies} />
 </Route>
 
 <Route path="/movies">
-  <div className='movie-form-lists'>
-<TextField label="Enter Image url" variant="outlined" value={image} onChange={(event) => setImage(event.target.value) } />
-<TextField label="Enter Name" variant="outlined" value={name} onChange={(event) => setName(event.target.value) } />
-<TextField label="Enter Rating" variant="outlined" value={rating} onChange={(event) => setRating(event.target.value) } />
-<TextField label="Enter Description" variant="outlined" value={description} onChange={(event) => setDescription(event.target.value) } />
-<Button onClick={addMovie} variant="contained">Add Movie</Button>
-  </div>
-<MovieList movies={movies} />
+<MovieList movies={movies} setMovies={setMovies} />
 </Route>
 
 <Route path="/color-game">
@@ -113,6 +95,7 @@ function NotFound() {
 function MovieDetails({movies}) {
   const {id} = useParams();
   const movie = movies[id];
+  const history = useHistory()
   return (
   <div>
 <iframe
@@ -131,6 +114,7 @@ function MovieDetails({movies}) {
 {/* Conditional styling */}
 <p>{movie.description}</p>
 </div>
+<Button onClick={() => history.goBack()} variant="contained" style={{margin: '20px'}} >Back</Button>
   </div>
   ) 
 }
