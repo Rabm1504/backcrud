@@ -3,11 +3,13 @@ import "./App.css";
 import { MovieList } from "./MovieList";
 import { INITIAL_MOVIES } from "./INITIAL_MOVIES";
 import Button from '@mui/material/Button';
-import { Switch, Route, Link, Redirect, useParams } from "react-router-dom";
+import { Switch, Route, Redirect, useParams } from "react-router-dom";
 import { AddColor } from "./AddColor";
 import { useHistory } from "react-router-dom";
 import { AddMovie } from "./AddMovie";
 import { EditMovie } from "./EditMovie";
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
 
 export default function App() {
   const [movies, setMovies] = useState(INITIAL_MOVIES)
@@ -24,22 +26,54 @@ export default function App() {
     }
   ];
 
+  const history = useHistory();
+
   return (
     <div className="App">
-<ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/movies">Movies</Link>
-        </li>
-        <li>
-          <Link to="/movies/add-movie">Add Movies</Link>
-        </li>
-        <li>
-          <Link to="/color-game">Color Game</Link>
-        </li>
-</ul>
+    <AppBar position="static">
+        <Toolbar>
+          <Button
+            onClick = {() => history.push("/") }
+            size="large"
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            sx={{ mr: 2 }}
+          >
+              Home
+          </Button>
+          <Button
+            onClick = {() => history.push("/movies") }
+            size="large"
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            sx={{ mr: 2 }}
+          >
+          Movies
+          </Button>
+          <Button
+            onClick = {() => history.push("/movies/add-movie") }
+            size="large"
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            sx={{ mr: 2 }}
+          >
+          Add Movies
+          </Button>
+          <Button
+            onClick = {() => history.push("/color-game") }
+            size="large"
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            sx={{ mr: 2 }}
+          >
+          Color Game
+          </Button>
+        </Toolbar>
+      </AppBar>
 
       {/* {users.map(({ pic, name }) => (
         <Msg name={name} pic={pic} />

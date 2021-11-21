@@ -21,16 +21,7 @@ export function AddMovie({ movies, setMovies }) {
       trailer,
     };
     setMovies([...movies, newMovie]);
-    resetForm();
     history.push('/movies');
-  };
-
-  const resetForm = () => {
-    setImage("");
-    setName("");
-    setRating("");
-    setDescription("");
-    setTrailer();
   };
 
   return <div className='movie-form-lists'>

@@ -43,7 +43,7 @@
 }
 
 .movie-poster{
-  height: 300px;
+  height: 400px;
   width: 300px;
   object-fit: cover;
 }
@@ -69,6 +69,7 @@ body {
   gap: 24px;
   flex-wrap: wrap;
   justify-content: flex-start;
+  margin-top: 20px;
 }
 
 .counter-container {
