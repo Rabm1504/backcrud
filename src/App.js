@@ -10,6 +10,10 @@ import { AddMovie } from "./AddMovie";
 import { EditMovie } from "./EditMovie";
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
+import { ThemeProvider, useTheme, createTheme } from '@mui/material/styles';
+import Paper from '@mui/material/Paper';
+import Brightness4Icon from '@mui/icons-material/Brightness4';
+import Brightness7Icon from '@mui/icons-material/Brightness7';
 
 export default function App() {
   const [movies, setMovies] = useState(INITIAL_MOVIES)
@@ -28,7 +32,20 @@ export default function App() {
 
   const history = useHistory();
 
+  const [mode, setMode] = useState("light");
+
+  const theme = createTheme({
+    palette: {
+      mode: mode,
+    },
+  })
+
+  const paperStyles = {minHeight: '100vh'}
+
   return (
+    <ThemeProvider theme={theme}>
+    <Paper elevation={3} style={paperStyles}>
+
     <div className="App">
     <AppBar position="static">
         <Toolbar>
@@ -72,14 +89,20 @@ export default function App() {
           >
           Color Game
           </Button>
+          <Button
+            style= {{marginLeft: "auto"}}
+            onClick = {() => setMode(mode === "light" ? "dark" : "light") }
+            size="large"
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            sx={{ mr: 2 }}
+            startIcon= {mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+          >
+              {(mode === "light" ? "dark" : "light")} Mode
+          </Button>
         </Toolbar>
       </AppBar>
-
-      {/* {users.map(({ pic, name }) => (
-        <Msg name={name} pic={pic} />
-      ))} */}
-
-    {/* <AddColor /> */}
 
 <Switch>
 <Route exact path="/">
@@ -116,6 +139,8 @@ export default function App() {
 </Switch>
 
   </div>
+  </Paper>
+  </ThemeProvider>
   );
 }
 
