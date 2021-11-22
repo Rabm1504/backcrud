@@ -14,6 +14,7 @@ import Paper from '@mui/material/Paper';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import { MovieDetails } from "./MovieDetails";
+import { BasicForm } from "./BasicForm";
 
 export default function App() {
   const [movies, setMovies] = useState([])
@@ -98,6 +99,16 @@ export default function App() {
           Color Game
           </Button>
           <Button
+            onClick = {() => history.push("/basic-form") }
+            size="large"
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            sx={{ mr: 2 }}
+          >
+          Basic Form
+          </Button>
+          <Button
             style= {{marginLeft: "auto"}}
             onClick = {() => setMode(mode === "light" ? "dark" : "light") }
             size="large"
@@ -139,6 +150,10 @@ export default function App() {
 
 <Route path="/color-game">
 <AddColor />
+</Route>
+
+<Route path="/basic-form">
+<BasicForm />
 </Route>
 
 <Route path="**">
