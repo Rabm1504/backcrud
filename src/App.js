@@ -1,22 +1,22 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import { MovieList } from "./MovieList";
-import { INITIAL_MOVIES } from "./INITIAL_MOVIES";
 import Button from '@mui/material/Button';
-import { Switch, Route, Redirect, useParams } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import { AddColor } from "./AddColor";
 import { useHistory } from "react-router-dom";
 import { AddMovie } from "./AddMovie";
 import { EditMovie } from "./EditMovie";
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
-import { ThemeProvider, useTheme, createTheme } from '@mui/material/styles';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
+import { MovieDetails } from "./MovieDetails";
 
 export default function App() {
-  const [movies, setMovies] = useState(INITIAL_MOVIES)
+  const [movies, setMovies] = useState([])
   const users = [
     {
       name: "Jayesh",
@@ -39,6 +39,14 @@ export default function App() {
       mode: mode,
     },
   })
+
+  useEffect(() => {
+    fetch('https://61988da9164fa60017c230e7.mockapi.io/movies', {
+      method: "GET",
+    }) 
+    .then((data) => data.json())
+    .then((mvs) => setMovies(mvs))
+  }, [])
 
   const paperStyles = {minHeight: '100vh'}
 
@@ -106,7 +114,7 @@ export default function App() {
 
 <Switch>
 <Route exact path="/">
-<h1>Welcome to React (Home of Learners)</h1>
+<h1 style={{textAlign: 'center', margin: '200px'}}>Welcome to React (Home of Learners)</h1>
 </Route>
 
 <Route path="/films">
@@ -114,19 +122,19 @@ export default function App() {
 </Route>
 
 <Route path="/movies/add-movie">
-  <AddMovie movies={movies} setMovies={setMovies} />
+  <AddMovie />
 </Route>
 
 <Route path="/movies/edit/:id">
-  <EditMovie movies={movies} setMovies={setMovies} />
+  <EditMovie />
 </Route>
 
 <Route path="/movies/:id">
-  <MovieDetails movies={movies} setMovies={setMovies} />
+  <MovieDetails />
 </Route>
 
 <Route path="/movies">
-<MovieList movies={movies} setMovies={setMovies} />
+<MovieList />
 </Route>
 
 <Route path="/color-game">
@@ -148,32 +156,5 @@ function NotFound() {
   const styles = {width: '100%', objectFit: 'cover'}
   return (
     <img style={styles} src='https://www.figmints.com/wp-content/uploads/2019/09/image16.gif' alt="" />
-  ) 
-}
-
-function MovieDetails({movies}) {
-  const {id} = useParams();
-  const movie = movies[id];
-  const history = useHistory()
-  return (
-  <div>
-<iframe
-  width="100%"
-  height="570"
-  src={movie.trailer}
-  title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-</iframe>
-
-<div className="movie-detail-container">
-<div className="movie-specs">
-  <h3 className="movie-name">{movie.name}</h3>
-  <p className="movie-rating">{movie.rating}</p>
-</div>
-
-{/* Conditional styling */}
-<p>{movie.description}</p>
-</div>
-<Button onClick={() => history.goBack()} variant="contained" style={{margin: '20px'}} >Back</Button>
-  </div>
   ) 
 }
