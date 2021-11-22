@@ -1,5 +1,6 @@
 export const INITIAL_MOVIES = [
     {
+      id: '100',
       image: 'https://upload.wikimedia.org/wikipedia/en/8/8a/The_Avengers_%282012_film%29_poster.jpg',
       name: 'Avengers: Endgame',
       rating: 8.5,
@@ -7,6 +8,7 @@ export const INITIAL_MOVIES = [
       trailer: 'https://www.youtube.com/embed/TcMBFSGVi1c'
     },
     {
+      id: '101',
       image: 'https://upload.wikimedia.org/wikipedia/en/b/bc/Interstellar_film_poster.jpg',
       name: 'Interstellar',
       rating: 8,
@@ -14,6 +16,7 @@ export const INITIAL_MOVIES = [
       trailer: 'https://www.youtube.com/embed/zSWdZVtXT7Ecelerometer'
     },
     {
+      id: '102',
       image: 'https://upload.wikimedia.org/wikipedia/en/2/2e/Inception_%282010%29_theatrical_poster.jpg',
       name: 'Inception',
       rating: 9.2,
@@ -21,6 +24,7 @@ export const INITIAL_MOVIES = [
       trailer: 'https://www.youtube.com/embed/YoHD9XEInc0'
     },
     {
+      id: '103',
       image: 'https://upload.wikimedia.org/wikipedia/en/thumb/1/14/Tenet_movie_poster.jpg/220px-Tenet_movie_poster.jpg',
       name: 'Tenet',
       rating: 7.8,
@@ -28,6 +32,7 @@ export const INITIAL_MOVIES = [
       trailer: 'https://www.youtube.com/embed/AZGcmvrTX9M'
     },
     {
+      id: '104',
       image: 'https://upload.wikimedia.org/wikipedia/en/thumb/d/d2/Prestige_poster.jpg/220px-Prestige_poster.jpg',
       name: 'The Prestige',
       rating: 8.8,
@@ -35,6 +40,7 @@ export const INITIAL_MOVIES = [
       trailer: 'https://www.youtube.com/embed/RLtaA9fFNXU'
     },
     {
+      id: '105',
       image: 'https://upload.wikimedia.org/wikipedia/en/thumb/6/6a/The_Illusionist_Poster.jpg/220px-The_Illusionist_Poster.jpg',
       name: 'The Illusionist',
       rating: 9.5,
