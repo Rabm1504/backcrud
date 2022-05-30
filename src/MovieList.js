@@ -9,7 +9,7 @@ export function MovieList() {
   const history = useHistory();
   const [movies, setMovies] = useState([])
   const getMovies = () => {
-    fetch('https://61988da9164fa60017c230e7.mockapi.io/movies', {
+    fetch('https://jayesh-movies.herokuapp.com/movies', {
       method: "GET",
     }) 
     .then((data) => data.json())
@@ -24,7 +24,7 @@ export function MovieList() {
     // );
     //   setMovies(remainingMovie)
 
-    fetch(`https://61988da9164fa60017c230e7.mockapi.io/movies/${id}`, {
+    fetch(`https://jayesh-movies.herokuapp.com/movies/${id}`, {
       method: "Delete",
     })
     .then(() => getMovies());

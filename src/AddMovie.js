@@ -55,7 +55,7 @@ export function AddMovie() {
     //   trailer,
     // };
 
-    fetch('https://61988da9164fa60017c230e7.mockapi.io/movies', {
+    fetch('https://jayesh-movies.herokuapp.com/movies', {
       method: "POST",
       body: JSON.stringify(newMovie),
       headers: {'Content-type': 'application/json'}
