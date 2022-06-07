@@ -14,10 +14,8 @@ import Paper from '@mui/material/Paper';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import { MovieDetails } from "./MovieDetails";
-import { BasicForm } from "./BasicForm";
 
 export default function App() {
-  const [movies, setMovies] = useState([])
 
   const history = useHistory();
 

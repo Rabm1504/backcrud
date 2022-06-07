@@ -52,23 +52,23 @@ import * as yup from "yup";
 //   )
 // }
 
-const formValidation = (values) => {
-    const errors = {};
-    console.log('formValidation', values);
+// const formValidation = (values) => {
+//     const errors = {};
+//     console.log('formValidation', values);
 
-    if(values.email.length < 5) {
-        errors.email = 'Enter longer email'
-    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
-        errors.email = 'Enter valid email'
-    }
+//     if(values.email.length < 5) {
+//         errors.email = 'Enter longer email'
+//     } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
+//         errors.email = 'Enter valid email'
+//     }
 
-    if(values.password.length < 8) {
-        errors.password = 'Enter longer pasword'
-    } else if(values.password.length > 12) {
-        errors.password = 'Enter shorter pasword'
-    }
-    return errors;
-}
+//     if(values.password.length < 8) {
+//         errors.password = 'Enter longer pasword'
+//     } else if(values.password.length > 12) {
+//         errors.password = 'Enter shorter pasword'
+//     }
+//     return errors;
+// }
 
 const formValidationSchema = yup.object({
         email: yup.string()
