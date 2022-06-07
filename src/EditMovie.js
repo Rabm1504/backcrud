@@ -13,7 +13,7 @@ export function EditMovie() {
     })
       .then((data) => data.json())
       .then((mv) => setMovie(mv));
-  }, []);
+  }, [id]);
 
   return movie ? <UpdateMoie movie={movie} /> : ""
 }

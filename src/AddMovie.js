@@ -1,10 +1,8 @@
-import { useState } from "react";
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import { useHistory } from "react-router-dom";
 import {useFormik} from "formik";
 import * as yup from "yup";
-import { maxHeight } from "@mui/system";
 
 const formValidationSchema = yup.object({
   image: yup.string()

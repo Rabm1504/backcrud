@@ -18,18 +18,6 @@ import { BasicForm } from "./BasicForm";
 
 export default function App() {
   const [movies, setMovies] = useState([])
-  const users = [
-    {
-      name: "Jayesh",
-      pic:
-        "https://asset.swarovski.com/images/$size_1000/t_swa103/b_rgb:ffffff,c_scale,dpr_auto,f_auto,w_auto/5379499_png/star-wars---darth-vader-swarovski-5379499.png"
-    },
-    {
-      name: "Dev",
-      pic:
-        "https://lumiere-a.akamaihd.net/v1/images/607598d0230e6a00018e21b2-image_354b1b56.jpeg?region=0%2C48%2C1536%2C768&width=960"
-    }
-  ];
 
   const history = useHistory();
 
@@ -46,7 +34,6 @@ export default function App() {
       method: "GET",
     }) 
     .then((data) => data.json())
-    .then((mvs) => setMovies(mvs))
   }, [])
 
   const paperStyles = {minHeight: '100vh'}
@@ -99,16 +86,6 @@ export default function App() {
           Color Game
           </Button>
           <Button
-            onClick = {() => history.push("/basic-form") }
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-          >
-          Basic Form
-          </Button>
-          <Button
             style= {{marginLeft: "auto"}}
             onClick = {() => setMode(mode === "light" ? "dark" : "light") }
             size="large"
@@ -150,10 +127,6 @@ export default function App() {
 
 <Route path="/color-game">
 <AddColor />
-</Route>
-
-<Route path="/basic-form">
-<BasicForm />
 </Route>
 
 <Route path="**">
