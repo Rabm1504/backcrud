@@ -9,7 +9,7 @@ export function MovieDetails() {
   // const movie = movies[id];
   const [movie, setMovie] = useState({});
   useEffect(() => {
-    fetch(`https://jayesh-movies.herokuapp.com/movies/${id}`, {
+    fetch(`https://61988da9164fa60017c230e7.mockapi.io/movies/${id}`, {
       method: "GET",
     })
       .then((data) => data.json())

@@ -37,7 +37,7 @@ const UpdateMoie = ({movie}) => {
       trailer,
     };
 
-    fetch(`https://jayesh-movies.herokuapp.com/movies/${movie.id}`, {
+    fetch(`https://61988da9164fa60017c230e7.mockapi.io/movies/${movie.id}`, {
       method: "PUT",
       body: JSON.stringify(updatedMovie),
       headers: {'Content-type': 'application/json'}
