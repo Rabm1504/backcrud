@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import Button from '@mui/material/Button';
 import { useParams } from "react-router-dom";
-import { useHistory } from "react-router-dom";
+import { useNavigation } from "react-router-dom";
 
 export function MovieDetails() {
   const { id } = useParams();
-  const history = useHistory();
+  const history = useNavigation();
   // const movie = movies[id];
   const [movie, setMovie] = useState({});
   useEffect(() => {

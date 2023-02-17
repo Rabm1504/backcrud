@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import { useHistory, useParams } from "react-router-dom";
+import { useNavigation, useParams } from "react-router-dom";
 
 export function EditMovie() {
   const {id} = useParams();
@@ -26,7 +26,7 @@ const UpdateMoie = ({movie}) => {
   const [description, setDescription] = useState(movie.description);
   const [trailer, setTrailer] = useState(movie.trailer);
 
-  const history = useHistory();
+  const history = useNavigation();
 
   const editMovie = () => {
     const updatedMovie = {

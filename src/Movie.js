@@ -7,13 +7,13 @@ import IconButton from '@mui/material/IconButton';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import InfoIcon from '@mui/icons-material/Info';
-import { useHistory } from "react-router-dom";
+import { useNavigation } from "react-router-dom";
 
 
 export function Movie({ image, name, rating, description, id, deleteButton, updateButton }) {
   const [show, setShow] = useState(true);
   const styles = {display: show ? 'block' : 'none'}
-  const history = useHistory();
+  const history = useNavigation();
   return (
     <Card className="movie-container">
       <img className="movie-poster" src={image} alt="" />

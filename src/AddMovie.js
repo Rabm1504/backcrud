@@ -1,6 +1,6 @@
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import { useHistory } from "react-router-dom";
+import { useNavigation } from "react-router-dom";
 import {useFormik} from "formik";
 import * as yup from "yup";
 
@@ -42,7 +42,7 @@ export function AddMovie() {
     }
 })
 
-  const history = useHistory();
+  const history = useNavigation();
 
   const addMovie = (newMovie) => {
     // const newMovie = {

@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 import "./App.css";
 import { MovieList } from "./MovieList";
 import Button from '@mui/material/Button';
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Routes, Route, Router } from "react-router-dom";
 import { AddColor } from "./AddColor";
-import { useHistory } from "react-router-dom";
+import { useNavigation } from "react-router-dom";
 import { AddMovie } from "./AddMovie";
 import { EditMovie } from "./EditMovie";
 import AppBar from '@mui/material/AppBar';
@@ -17,7 +17,7 @@ import { MovieDetails } from "./MovieDetails";
 
 export default function App() {
 
-  const history = useHistory();
+  const history = useNavigation();
 
   const [mode, setMode] = useState("light");
 
@@ -98,13 +98,13 @@ export default function App() {
         </Toolbar>
       </AppBar>
 
-<Switch>
+<Routes>
 <Route exact path="/">
 <h1 style={{textAlign: 'center', margin: '200px'}}>Welcome to React (Home of Learners)</h1>
 </Route>
 
 <Route path="/films">
-  <Redirect to='/movies' />
+  <Router to='/movies' />
 </Route>
 
 <Route path="/movies/add-movie">
@@ -130,7 +130,7 @@ export default function App() {
 <Route path="**">
 <NotFound />
 </Route>
-</Switch>
+</Routes>
 
   </div>
   </Paper>

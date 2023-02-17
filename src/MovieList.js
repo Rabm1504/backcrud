@@ -2,11 +2,11 @@ import { IconButton } from "@mui/material";
 import { Movie } from "./Movie";
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-import { useHistory } from "react-router-dom";
+import { useNavigation } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 export function MovieList() {
-  const history = useHistory();
+  const history = useNavigation();
   const [movies, setMovies] = useState([])
   const getMovies = () => {
     fetch('https://61988da9164fa60017c230e7.mockapi.io/movies', {
